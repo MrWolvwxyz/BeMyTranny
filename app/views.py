@@ -3,6 +3,7 @@ from flask import render_template
 from .forms import LoginForm
 
 @app.route('/')
+<<<<<<< HEAD
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -16,6 +17,9 @@ def login():
                            form=form)
 
 @app.route('/index')
+=======
+@app.route('/index.html')
+>>>>>>> master
 def index():
     return render_template('index.html',
                            title='Home')
