@@ -20,6 +20,7 @@ def login():
             error = 'Are you sure you registered?' 
     return render_template('login.html', error=error)
 
+<<<<<<< Updated upstream
 @app.route('/login', methods=['GET', 'POST'])
 def register():
     error = 'All good'
@@ -28,6 +29,13 @@ def register():
     u = models.User(username=user, email=email)
     db.session.add(u)
     db.session.commit()
+=======
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    error = None
+    return render_template('register.html', error=error)
+>>>>>>> Stashed changes
 
 @app.route('/logout')
 def logout():
