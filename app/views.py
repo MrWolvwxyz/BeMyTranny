@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, models
 from flask import render_template, redirect, url_for, request, session, flash
 
 @app.route('/')
@@ -9,14 +9,25 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
+    error = 'All good'
     if request.method == 'POST':
-        if request.form['username'] != 'admin':
-            error = 'Invalid credentials'
-        else:
+        user = request.form['username']
+        query = models.User.query.filter_by(username=user).first()
+        if query is not None: #registered user
             session['logged_in'] = True
-            return redirect(url_for('home'))
+            return redirect(url_for('index'))
+        else:
+            error = 'Are you sure you registered?' 
     return render_template('login.html', error=error)
+
+@app.route('/login', methods=['GET', 'POST'])
+def register():
+    error = 'All good'
+    email = request.form['email']
+    user = request.form['username']
+    u = models.User(username=user, email=email)
+    db.session.add(u)
+    db.session.commit()
 
 @app.route('/logout')
 def logout():

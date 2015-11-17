@@ -1,4 +1,10 @@
 <html>
+<link rel="stylesheet" href="../static/css/bootstrap.css" />
+    <!-- Custom CSS -->
+    <link href="../static/css/landing-page.css" rel="stylesheet">
+<table>
+<tr>
+<td width = "500">
   <h2>Login</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   <form action="{{ url_for('login') }}" method=post>
@@ -10,4 +16,21 @@
       <dd><input type=submit value=Login>
     </dl>
   </form>
+  </td>
+  <td width = "500">
+  <form action="{{ url_for('login') }}" method=post>
+  <dl>
+  <h2>Register</h2>
+    <dt>Email:
+    <dd><input type=text name=email>
+    <dt>Username:
+    <dd><input type=text name=username>
+    <dt>Password:
+    <dd><input type=password name=password>
+    <dd><input type=submit value=Register>
+    </dl>
+    </form>
+  </td>
+</tr>
+</table>
 </html>
