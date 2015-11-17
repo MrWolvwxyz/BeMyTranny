@@ -1,33 +1,13 @@
 <html>
-    <!-- Bootstrap Core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="../static/css/landing-page.css" rel="stylesheet">
-
-                <table>
-                    <tr>
-                        <td width = "500">
-                            <h3>Login:</h3>
-                            <h4>Username: <input size="10" type="text" name="UserName" placeholder="Username">
-                            </h4>
-                            <h4>Password: <input size="10" type="text" name="UserName" placeholder="Pwd">
-                            </h4>
-                            <center>
-                            <button type = "button" style="color:grey;">Login</button>
-                                </center>
-                        </td>
-                        <td width = "500">
-                            <h3>Register:</h3>
-                            <h4>Email: <input size="10" type="text" name="UserName" placeholder="Email">
-                            </h4>
-                            <h4>Username: <input size="10" type="text" name="UserName" placeholder="Username">
-                            </h4>
-                            <h4>Password: <input size="10" type="text" name="UserName" placeholder="Pwd">
-                            </h4> 
-                            <center>
-                            <button type = "button" style="color:grey;">Register</button>
-                                </center>
-                        </td>
-                    </tr>
-                </table>
+  <h2>Login</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('login') }}" method=post>
+    <dl>
+      <dt>Username:
+      <dd><input type=text name=username>
+      <dt>Password:
+      <dd><input type=password name=password>
+      <dd><input type=submit value=Login>
+    </dl>
+  </form>
 </html>
