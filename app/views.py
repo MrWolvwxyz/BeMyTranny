@@ -2,7 +2,7 @@ from app import app, db, models
 from flask import render_template, redirect, url_for, request, session, flash
 
 @app.route('/')
-@app.route('/index.html')
+@app.route('/index')
 def index():
     return render_template('index.html',
                            title='Home')
@@ -44,5 +44,5 @@ def logout():
     return render_template('logout.html', error=error)
 
 def return_home():  
-    return redirect(url_for('home')) #find a better redirect?
+    return redirect(url_for('Home')) #find a better redirect?
 
