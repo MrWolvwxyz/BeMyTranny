@@ -11,17 +11,16 @@ def index():
 def login():
     error = None
     if request.method == 'POST':
-        try:
-            user = request.form['username']
-            query = models.User.query.filter_by(username=user).first()
-            if query is not None: #registered user
-                session['logged_in'] = True
-                return redirect(url_for('index'))
-            else:
-                error = 'Are you sure you registered?' 
-        except:
-            pass
-        return render_template('login.html', error=error)
+        user = request.form['username']
+        query = models.User.query.filter_by(username=user).first()
+        if query is not None: #registered user
+            session['logged_in'] = True
+            print url_for('index')
+            return redirect(url_for('index'))
+        else:
+            error = 'Are you sure you registered?' 
+    return render_template('login.html', error=error)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
