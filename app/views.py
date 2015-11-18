@@ -9,7 +9,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = 'All good'
+    error = None
     if request.method == 'POST':
         user = request.form['username']
         query = models.User.query.filter_by(username=user).first()
@@ -18,9 +18,9 @@ def login():
             return redirect(url_for('index'))
         else:
             error = 'Are you sure you registered?' 
-        u = models.User(username=user, email=email)
-        db.session.add(u)
-        db.session.commit()
+        #u = models.User(username=user, email=email)
+        #db.session.add(u)
+        #db.session.commit()
     return render_template('login.html', error=error)
 
 
@@ -31,6 +31,7 @@ def register():
     user = request.form['username']
     u = models.User(username=user, email=email)
     db.session.add(u)
+    return render_template('register.html', error=error)
 
 
 
