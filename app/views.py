@@ -18,9 +18,6 @@ def login():
             return redirect(url_for('index'))
         else:
             error = 'Are you sure you registered?' 
-        #u = models.User(username=user, email=email)
-        #db.session.add(u)
-        #db.session.commit()
     return render_template('login.html', error=error)
 
 
