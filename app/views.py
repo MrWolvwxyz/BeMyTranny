@@ -24,14 +24,21 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    error = 'All good'
-    email = request.form['email']
-    user = request.form['username']
-    u = models.User(username=user, email=email)
-    db.session.add(u)
-    return render_template('register.html', error=error)
+    if request.method == 'POST':
+        error = None
+        print('error here')
+        email = request.form['email']
+        print('error there')
+        user = request.form['username']
+        print('error')
+        u = models.User(username=user, email=email)
+        print('now here')
+        db.session.add(u)
+    return render_template('register.html')# , error=error)
 
-
+@app.route('/explorepage')
+def explorepage():
+    return render_template('explorepage.html')
 
 @app.route('/logout')
 def logout():
