@@ -32,6 +32,31 @@ def register():
 
 
 
+@app.route('/addmoreresponse', methods=['GET', 'POST'])
+def addmoreresponse():
+    error = 'Not finished'
+
+    return render_template('addmoreresponse.html', error=error)
+
+
+@app.route('/ask', methods=['GET', 'POST'])
+def ask():
+    error = 'Not finished'
+    return render_template('ask.html', error=error)
+
+@app.route('/explorepage', methods=['GET', 'POST'])
+def explorepage():
+    error = 'Not finished'
+    return render_template('explorepage.html', error=error)
+
+
+@app.route('/userpage', methods=['GET', 'POST'])
+def userpage():
+    error = 'Not finished'
+    return render_template('userpage.html', error=error)
+
+
+
 @app.route('/logout')
 def logout():
     error = None
