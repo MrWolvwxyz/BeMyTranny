@@ -9,7 +9,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = 'All good'
+    error = None
     if request.method == 'POST':
         user = request.form['username']
         query = models.User.query.filter_by(username=user).first()
