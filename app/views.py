@@ -11,15 +11,17 @@ def index():
 def login():
     error = None
     if request.method == 'POST':
-        user = request.form['username']
-        query = models.User.query.filter_by(username=user).first()
-        if query is not None: #registered user
-            session['logged_in'] = True
-            return redirect(url_for('index'))
-        else:
-            error = 'Are you sure you registered?' 
-    return render_template('login.html', error=error)
-
+        try:
+            user = request.form['username']
+            query = models.User.query.filter_by(username=user).first()
+            if query is not None: #registered user
+                session['logged_in'] = True
+                return redirect(url_for('index'))
+            else:
+                error = 'Are you sure you registered?' 
+        except:
+            pass
+        return render_template('login.html', error=error)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -29,31 +31,6 @@ def register():
     u = models.User(username=user, email=email)
     db.session.add(u)
     return render_template('register.html', error=error)
-
-
-
-@app.route('/addmoreresponse', methods=['GET', 'POST'])
-def addmoreresponse():
-    error = 'Not finished'
-
-    return render_template('addmoreresponse.html', error=error)
-
-
-@app.route('/ask', methods=['GET', 'POST'])
-def ask():
-    error = 'Not finished'
-    return render_template('ask.html', error=error)
-
-@app.route('/explorepage', methods=['GET', 'POST'])
-def explorepage():
-    error = 'Not finished'
-    return render_template('explorepage.html', error=error)
-
-
-@app.route('/userpage', methods=['GET', 'POST'])
-def userpage():
-    error = 'Not finished'
-    return render_template('userpage.html', error=error)
 
 
 
