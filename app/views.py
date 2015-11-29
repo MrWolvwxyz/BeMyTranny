@@ -8,12 +8,13 @@ def index():
     return render_template('index.html',
                            title='Home')
 
+password_salt = "extrasalty"
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
         user = request.form['username']
-	pw_hash = sha256(request.form['password']).hexdigest()
+	pw_hash = sha256(password_salt+request.form['password']).hexdigest()
         query = models.User.query.filter_by(username=user)
 	if query.count() == 0:
 		error = 'Username not found'
@@ -35,7 +36,13 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         user = request.form['username']
-	pw_hash = sha256(request.form['password']).hexdigest()
+	if models.User.query.filter_by(username=user).count() != 0:
+		error = "Username already in use"
+		return render_template('register.html', error=error)
+	elif models.User.query.filter_by(email=email).count() != 0:
+		error = "Email already in use"
+		return render_template('register.html', error=error)
+	pw_hash = sha256(password_salt+request.form['password']).hexdigest()
         u = models.User(username=user, pw_hash=pw_hash, email=email)
         db.session.add(u)
 	db.session.commit()
