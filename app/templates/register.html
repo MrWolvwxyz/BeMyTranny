@@ -65,25 +65,21 @@
                     <h2>Be My Translator:</h2>
                 </div>
                 <br>
-                <table >
-                    <tr>
+               
                         
-                        <td width = "500">
-  <form action="{{ url_for('register') }}" method=post>
-  <dl>
-  <h2>Register</h2>
-    <dt>Email:
-    <dd><input type=text style="color: black;" name=email>
-    <dt>Username:
-    <dd><input type=text style="color: black;" name=username>
-    <dt>Password:
-    <dd><input type=password style="hidden; color: black;" name=password>
-    <dd><input type=submit style="color: black;" value=Register>
-    </dl>
+    <form action="{{ url_for('register') }}" method=post>
+        <dl>
+        <h2>Register</h2>
+        <dt>Email:
+            <dd><input type=text style="color: black;" name=email>
+        <dt>Username:
+            <dd><input type=text style="color: black;" name=username>
+        <dt>Password:
+            <dd><input type=password style="hidden; color: black;" name=password>
+        <dd><input type=submit style="color: black;" value=Register>
+        </dl>
     </form>
-                        </td>
-                    </tr>
-                </table>
+                       
                 
             </div>
 
