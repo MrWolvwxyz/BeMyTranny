@@ -1,17 +1,59 @@
 <html>
+    <title>Login to BMT</title>
 <link rel="stylesheet" href="../static/css/bootstrap.css" />
     <!-- Custom CSS -->
     <link href="../static/css/landing-page.css" rel="stylesheet">
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="/index">Be My Translator</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/explorepage">Explore</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                </div>
+                <br>
+               
 <table>
 <tr>
 <td width = "500">
-  <h2>Login</h2>
+  <h2 style="color:white">Login</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   <form action="{{ url_for('login') }}" method=post>
     <dl>
-      <dt>Username:
+      <dt style="color:white">Username:
       <dd><input type=text name=username>
-      <dt>Password:
+      <dt style="color:white">Password:
       <dd><input type=password name=password>
       <dd><input type=submit value=Login>
     </dl>
@@ -20,12 +62,12 @@
   <td width = "500">
   <form action="{{ url_for('register') }}" method=post>
   <dl>
-  <h2>Register</h2>
-    <dt>Email:
+  <h2 style="color:white">Register</h2>
+    <dt style="color:white">Email:
     <dd><input type=text name=email>
-    <dt>Username:
+    <dt style="color:white">Username:
     <dd><input type=text name=username>
-    <dt>Password:
+    <dt style="color:white">Password:
     <dd><input type=password name=password>
     <dd><input type=submit value=Register>
     </dl>
@@ -33,4 +75,5 @@
   </td>
 </tr>
 </table>
+</body>
 </html>
