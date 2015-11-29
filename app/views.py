@@ -18,16 +18,16 @@ def login():
         query = models.User.query.filter_by(username=user)
 	if query.count() == 0:
 		error = 'Username not found'
-		return render_template('login.html', error=error)
+		return render_template('register.html', error=error)
 	query = query.filter_by(pw_hash=pw_hash)
 	if query.count() == 0:
 		error = 'Incorrect password'
-		return render_template('login.html', error=error)
+		return render_template('register.html', error=error)
 	#registered user
     	session['logged_in'] = True
     	print url_for('index')
     	return redirect(url_for('index'))
-    return render_template('login.html', error=error)
+    return render_template('register.html', error=error)
 
 
 @app.route('/register', methods=['GET', 'POST'])
