@@ -4,6 +4,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=False)
     email = db.Column(db.String(120), index=True, unique=False)
+    pw_hash = db.Column(db.String(70), index=False, unique=False)
+#len(sha256.hexdigest()) = 64
     #posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     @property
