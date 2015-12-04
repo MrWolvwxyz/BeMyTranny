@@ -13,6 +13,10 @@ def index():
         return render_template('userpage.html')
     return render_template('index.html',title='Home')
 
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About Us')
+
 password_salt = "extrasalty"
 @app.route('/login', methods=['GET', 'POST'])
 def login():
