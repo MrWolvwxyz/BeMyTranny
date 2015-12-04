@@ -3,13 +3,15 @@ from flask import render_template, redirect, url_for, request, session, flash
 from hashlib import sha256
 
 
-
+fakeloggedin = True
+fakeuserid = 12345
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html',
-                           title='Home')
+    if fakeloggedin:
+        return render_template('userpage.html')
+    return render_template('index.html',title='Home')
 
 password_salt = "extrasalty"
 @app.route('/login', methods=['GET', 'POST'])
@@ -57,10 +59,12 @@ def explorepage():
 
         class fakePost:
 
-            def __init__(self, uid, tit, des, path):
+            def __init__(self, uid, tit, des, ori, tar, path):
                 self.userid = uid;
                 self.title = tit;
                 self.description = des;
+                self.origin = ori;
+                self.target = tar;
                 self.pathofIMG = path;
 
         myfakePost = []
@@ -81,6 +85,16 @@ def logout():
     error = None
     #session.pop('logged_in', None) #pops 'True' value off and replace with None
     return render_template('logout.html',  error=error)
+
+
+@app.route('/home')
+def home():
+    error = None
+    #session.pop('logged_in', None) #pops 'True' value off and replace with None
+    return render_template('userpage.html',  error=error)
+
+
+
 
 def return_home():  
     return redirect(url_for('Home')) #find a better redirect?
