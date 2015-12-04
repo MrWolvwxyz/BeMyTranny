@@ -2,6 +2,9 @@ from app import app, db, models
 from flask import render_template, redirect, url_for, request, session, flash
 from hashlib import sha256
 
+
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -50,13 +53,34 @@ def register():
 
 @app.route('/explorepage')
 def explorepage():
-    return render_template('explorepage.html')
+    if request.method == 'GET':
+
+        class fakePost:
+
+            def __init__(self, uid, tit, des, path):
+                self.userid = uid;
+                self.title = tit;
+                self.description = des;
+                self.pathofIMG = path;
+
+        myfakePost = []
+
+        myfakePost.append(fakePost(1,"post1","description for post1","kshirt.jpg"))
+        myfakePost.append(fakePost(2,"post2","description for post2","kshirt.jpg"))
+        myfakePost.append(fakePost(3,"post3","description for post3","kshirt.jpg"))
+        myfakePost.append(fakePost(4,"post4","description for post4","kshirt.jpg"))
+        myfakePost.append(fakePost(5,"post5","description for post5","kshirt.jpg"))
+        myfakePost.append(fakePost(6,"post6","description for post6","kshirt.jpg"))
+        myfakePost.append(fakePost(7,"post7","description for post7","kshirt.jpg"))
+
+        print ("this is a get method") 
+    return render_template('explorepage.html', data = myfakePost)
 
 @app.route('/logout')
 def logout():
     error = None
     #session.pop('logged_in', None) #pops 'True' value off and replace with None
-    return render_template('logout.html', error=error)
+    return render_template('logout.html',  error=error)
 
 def return_home():  
     return redirect(url_for('Home')) #find a better redirect?
