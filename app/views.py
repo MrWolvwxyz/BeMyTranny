@@ -97,13 +97,34 @@ def home():
     #session.pop('logged_in', None) #pops 'True' value off and replace with None
     return render_template('userpage.html',  error=error)
 
+newpicUploaded = False;
+newpic = None;
 
-
-@app.route('/ask')
+@app.route('/ask',  methods=['GET', 'POST'])
 def ask():
     error = None
-    #session.pop('logged_in', None) #pops 'True' value off and replace with None
+    if request.method=='POST':
+        op=request.form['op']
+        print ("enter the post")
+        if op == "add":
+            print ("Add a picture")
+            newpic = request.files['photo']
+
+        elif op == "submit":
+            print ("hey I'm submitting")
+            title = request.form['title']
+            ori = request.form['ori']
+
+            print ("The title you entered is ") + title
+
+            print ("The original language you entered is ") + ori
+
+
+
+        return render_template('ask.html',  error=error)
+
     print ("route = ask")
+
     return render_template('ask.html',  error=error)
 
 

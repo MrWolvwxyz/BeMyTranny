@@ -20,6 +20,24 @@
     <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script>
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+};
+</script>
 
 </head>
 
@@ -74,25 +92,48 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
+                    
                     <h2 class="section-heading">Q:</h2>
-                    <h4>Title: <input size="25" type="text" name="UserName">
-                    </h4>
-                    <h4>Original Language: <input size="10" type="text" name="UserName" >
-                    </h4>
-                    <h4>Target Language: <input size="10" type="text" name="UserName" >
-                    </h4>
-                    <h4>Description:</h4>
-                    <textarea rows="4" cols="35">
-                    </textarea>
-                    <form action="demo_form.asp">
-                      <input type="file" name="pic" accept="image/*">
-                      <input type="submit">
+
+
+
+
+
+                    <form method="post" enctype=multipart/form-data id = "askform">
+
+                        <input name="op" value="submit" hidden>
+
+                        <h4>Title:</h4>
+                        <input type="text" name="title">
+                        <br>
+                        <h4>Original Language: </h4>
+                        <input type="text" name="ori">
+                        <br>
+                        <h4>Target Language: </h4>
+                        <input type="text" name="tar">
+                        <br>
+                        <h4>Enter the description:</h4>
+                        <textarea rows="4" cols="35" name="des" form="askform">Enter description here...</textarea>
+                        <br>
+                        <input type="submit" value = "Ask!">
                     </form>
+
+                    
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <h2>Picture Preview:</h2>
-                    <img class="img-responsive" src="../static/img/question.jpg" alt="">
+                    <img id="myImg" src="#" alt="your image" />
+
+                    <form method="post" enctype=multipart/form-data>
+                        Upload new photo:
+                        <input type="file" name="photo">
+                        <input name="op" value="add" hidden>
+                        <input name="albumid" value=0 hidden>
+                        <input type="submit" value="Upload">
+                    </form>
+
                 </div>
+
             </div>
 
         </div>
