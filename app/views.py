@@ -69,13 +69,13 @@ def explorepage():
 
         myfakePost = []
 
-        myfakePost.append(fakePost(1,"post1","description for post1","kshirt.jpg"))
-        myfakePost.append(fakePost(2,"post2","description for post2","kshirt.jpg"))
-        myfakePost.append(fakePost(3,"post3","description for post3","kshirt.jpg"))
-        myfakePost.append(fakePost(4,"post4","description for post4","kshirt.jpg"))
-        myfakePost.append(fakePost(5,"post5","description for post5","kshirt.jpg"))
-        myfakePost.append(fakePost(6,"post6","description for post6","kshirt.jpg"))
-        myfakePost.append(fakePost(7,"post7","description for post7","kshirt.jpg"))
+        myfakePost.append(fakePost(1,"post1","description for post1","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(2,"post2","description for post2","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(3,"post3","description for post3","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(4,"post4","description for post4","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(5,"post5","description for post5","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(6,"post6","description for post6","Chinese","English","kshirt.jpg"))
+        myfakePost.append(fakePost(7,"post7","description for post7","Chinese","English","kshirt.jpg"))
 
         print ("this is a get method") 
     return render_template('explorepage.html', data = myfakePost)
@@ -92,6 +92,15 @@ def home():
     error = None
     #session.pop('logged_in', None) #pops 'True' value off and replace with None
     return render_template('userpage.html',  error=error)
+
+
+
+@app.route('/ask')
+def ask():
+    error = None
+    #session.pop('logged_in', None) #pops 'True' value off and replace with None
+    print ("route = ask")
+    return render_template('ask.html',  error=error)
 
 
 
