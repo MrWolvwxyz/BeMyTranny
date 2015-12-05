@@ -114,11 +114,11 @@ def ask():
             print ("hey I'm submitting")
             title = request.form['title']
             ori = request.form['ori']
-
+            tar = request.form['tar']
+            des = request.form['des']
             print ("The title you entered is ") + title
-
             print ("The original language you entered is ") + ori
-
+            print ("The description you entered is ") + des
 
 
         return render_template('ask.html',  error=error)
