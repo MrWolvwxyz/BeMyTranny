@@ -32,7 +32,7 @@ def askfunc():
             cur.execute("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', '" + newpic.filename +"', "+ currentuserid +");")
             cur.execute("commit")
 
-        return render_template('ask.html',  error=error)
+        return render_template('redirect.html',  error=error)
 
     print ("route = ask")
 

@@ -70,40 +70,41 @@
         <!-- /.container -->
     </nav>
 
+    <script>
+        var seconds = 7; // seconds for HTML
+        var foo; // variable for clearInterval() function
 
+        function redirect() {
+            document.location.href = '/userpage';
+        }
 
-    {% for u in data %}
+        function updateSecs() {
+            document.getElementById("seconds").innerHTML = seconds;
+            seconds--;
+            if (seconds == -1) {
+                clearInterval(foo);
+                redirect();
+            }
+        }
+
+        function countdownTimer() {
+            foo = setInterval(function () {
+                updateSecs()
+            }, 1000);
+        }
+
+        countdownTimer();
+    </script>
+
     <div class="content-section-b">
 
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">{{u[1]}}<br></h2>
-                        Original Language: {{u[3]}}<br>
-                        Target Language: {{u[4]}}<br>
-                    
-                    <p class="lead">{{u[2]}}</p>
-                    <center>
-                            <button type = "button"  onclick="clickFunc()" style="color:grey;">I'll Be Your Translator : )</button>
-                    </center>
-                </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="../static/pictures/{{u[6]}}/{{u[5]}}" alt="">
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
+        <h2>Hey Cong! You've submitted that successfully!</h2>
+        <h3>You should be automatically redirected in <span id="seconds">7</span> seconds.</h3>
 
     </div>
 
-    {% endfor %}
-    <!-- /.content-section-b -->
 
-    <!-- /.content-section-a -->
+
 
     
 
