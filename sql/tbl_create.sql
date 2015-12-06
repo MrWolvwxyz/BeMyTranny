@@ -19,6 +19,9 @@ userid int,
 primary key (postid)
 );
 
+insert into user(username, password, email)
+values
+('riya', 'bunny', 'riyagwj@umich.edu');
 
 insert into post (title, description, origin, target, pathtophoto, userid)
 values 

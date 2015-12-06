@@ -68,7 +68,7 @@
 <table>            
 <tr>
 <td width = "1000">
-    <form action="{{ url_for('register') }}" method=post>
+    <form  method=post>
         <dl>
         <h2>Register</h2>
         <dt>Email:
@@ -85,7 +85,7 @@
 <td width = "1000">
   <h2 style="color:white">Login</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method=post>
+  <form  method=post>
     <dl>
       <dt style="color:white">Username:
       <dd><input type=text name=username style="color:black">
