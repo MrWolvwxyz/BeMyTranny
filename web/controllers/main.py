@@ -14,9 +14,10 @@ main = Blueprint('main', __name__, template_folder='templates')
 def index():
 	cur=mysql.connection.cursor()
 	cur.execute("select * from user")
+	msgs = [];
 	msgs=cur.fetchall()
-	print msgs[0]
-
+	print msgs
+	print msgs[0][1]
 	if fakeloggedin:
 		return render_template('userpage.html')
 	return render_template('index.html',title='Home')

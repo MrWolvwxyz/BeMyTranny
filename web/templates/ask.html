@@ -60,7 +60,7 @@ function imageIsLoaded(e) {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">Explore</a>
+                        <a href="/explorepage">Explore</a>
                     </li>
                     <li>
                         <div class="dropdown" style="margin-top:10px">
@@ -111,10 +111,14 @@ function imageIsLoaded(e) {
                         <br>
                         <h4>Target Language: </h4>
                         <input type="text" name="tar">
+                                                <br>
+                        <h4>Upload new photo: </h4>
+                        <input type="file" name="photo">
                         <br>
                         <h4>Enter the description:</h4>
                         <textarea rows="4" cols="35" name="des" form="askform">Enter description here...</textarea>
                         <br>
+
                         <input type="submit" value = "Ask!">
                     </form>
 
@@ -123,14 +127,6 @@ function imageIsLoaded(e) {
                     <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <h2>Picture Preview:</h2>
                     <img id="myImg" src="#" alt="your image" />
-
-                    <form method="post" enctype=multipart/form-data>
-                        Upload new photo:
-                        <input type="file" name="photo">
-                        <input name="op" value="add" hidden>
-                        <input name="albumid" value=0 hidden>
-                        <input type="submit" value="Upload">
-                    </form>
 
                 </div>
 

@@ -81,14 +81,17 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">{{u.title}}<br>Target Language: Chinese English</h2>
-                    <p class="lead">Got this from an Airbnb host, this should be French. Can anyone help me to translate this into either Engilish or Chinese?</p>
+                    <h2 class="section-heading">{{u[1]}}<br></h2>
+                        Original Language: {{u[3]}}<br>
+                        Target Language: {{u[4]}}<br>
+                    
+                    <p class="lead">{{u[2]}}</p>
                     <center>
                             <button type = "button" style="color:grey;">I'll Be Your Translator : )</button>
                     </center>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="../static/img/french.jpg" alt="">
+                    <img class="img-responsive" src="../static/pictures/{{u[6]}}/{{u[5]}}" alt="">
                 </div>
             </div>
 

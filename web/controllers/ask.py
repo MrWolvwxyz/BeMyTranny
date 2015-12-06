@@ -1,7 +1,7 @@
 from flask import *
 from hashlib import sha256
-
 from extensions import mysql
+import os
 
 fakeloggedin = True
 fakeuserid = 12345
@@ -16,19 +16,20 @@ def askfunc():
     if request.method=='POST':
         op=request.form['op']
         print ("enter the post")
-        if op == "add":
-            print ("Add a picture")
+        if op == "submit":
+
             newpic = request.files['photo']
             picAdded = True;
+            currentuserid = 1;
+            currentuserid = str(currentuserid)
+            newpic.save("static/pictures/"  + currentuserid +   "/" +newpic.filename)
 
-        elif op == "submit":
-            print ("hey I'm submitting")
             title = request.form['title']
             ori = request.form['ori']
             tar = request.form['tar']
             des = request.form['des']
             cur=mysql.connection.cursor()
-            cur.execute("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', 'where.jpg', 1);")
+            cur.execute("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', '" + newpic.filename +"', "+ currentuserid +");")
             cur.execute("commit")
 
         return render_template('ask.html',  error=error)
