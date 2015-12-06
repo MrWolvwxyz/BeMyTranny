@@ -6,6 +6,8 @@ app = Flask(__name__, template_folder='templates')
 app.register_blueprint(controllers.ask)
 app.register_blueprint(controllers.explorepage)
 app.register_blueprint(controllers.main)
+app.register_blueprint(controllers.login)
+app.register_blueprint(controllers.userpage)
 
 
 app.config['MYSQL_USER']='root'

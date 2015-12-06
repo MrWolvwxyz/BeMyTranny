@@ -3,7 +3,7 @@ from hashlib import sha256
 
 from extensions import mysql
 
-fakeloggedin = True
+fakeloggedin = False
 fakeuserid = 12345
 
 main = Blueprint('main', __name__, template_folder='templates')
