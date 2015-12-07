@@ -11,7 +11,6 @@ login = Blueprint('login', __name__, template_folder='templates')
 @login.route('/login', methods = ['GET', 'POST'])
 def loginfunc():
 	error = None
-	print(session['username'])
 	if request.method == 'POST' and request.form['operation'] == 'login':
 		print ("hey I'm at the login page")
 		cur = mysql.connection.cursor()

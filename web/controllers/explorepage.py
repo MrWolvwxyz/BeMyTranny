@@ -12,7 +12,6 @@ explorepage = Blueprint('explorepage', __name__, template_folder='templates')
 @explorepage.route('/explorepage')
 def explorepagefunc():
     if request.method == 'GET':
-    	print(session['username'])
         cur=mysql.connection.cursor()
         cur.execute("select * from post")
         msgs = [];
