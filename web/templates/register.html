@@ -68,16 +68,18 @@
 <table>            
 <tr>
 <td width = "1000">
+    <h2>Register</h2>
+    {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
     <form  method=post>
         <dl>
-        <h2>Register</h2>
-        <dt>Email:
+            <dd><input name='operation' value = 'register' hidden >
+            <dt>Email:
             <dd><input type=text style="color: black;" name=email>
-        <dt>Username:
+            <dt>Username:
             <dd><input type=text style="color: black;" name=username>
-        <dt>Password:
+            <dt>Password:
             <dd><input type=password style="hidden; color: black;" name=password>
-        <dd><input type=submit style="color: black;" value=Register>
+            <dd><input type=submit style="color: black;" value=Register>
         </dl>
     </form>
                        
@@ -87,11 +89,12 @@
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   <form  method=post>
     <dl>
-      <dt style="color:white">Username:
-      <dd><input type=text name=username style="color:black">
-      <dt style="color:white">Password:
-      <dd><input type=password name=password style="color:black">
-      <dd><input type=submit value=Login style="color:black">
+        <dd><input name='operation' value = 'login' hidden >
+        <dt style="color:white">Username:
+        <dd><input type=text name=username style="color:black">
+        <dt style="color:white">Password:
+        <dd><input type=password name=password style="color:black">
+        <dd><input type=submit value=Login style="color:black">
     </dl>
   </form>
 </td>
