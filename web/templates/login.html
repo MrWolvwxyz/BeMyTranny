@@ -51,6 +51,7 @@
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   <form action="{{ url_for('login') }}" method=post>
     <dl>
+      <dd><input name='operation' value = 'login' hidden >
       <dt style="color:white">Username:
       <dd><input type=text name=username>
       <dt style="color:white">Password:
@@ -60,9 +61,10 @@
   </form>
   </td>
   <td width = "500">
-  <form action="{{ url_for('register') }}" method=post>
+  <form action="{{ url_for('login') }}" method=post>
   <dl>
   <h2 style="color:white">Register</h2>
+    <dd><input name='operation' value = 'register' hidden >
     <dt style="color:white">Email:
     <dd><input type=text name=email>
     <dt style="color:white">Username:
