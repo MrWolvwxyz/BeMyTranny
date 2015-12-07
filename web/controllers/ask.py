@@ -32,14 +32,9 @@ def askfunc():
             cur.execute("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', '" + newpic.filename +"', "+ currentuserid +");")
             cur.execute("commit")
 
-<<<<<<< Updated upstream
+
         return render_template('redirect.html',  error=error)
 
-=======
-        return render_template('ask.html',  error=error)
-    print(session['username'])
->>>>>>> Stashed changes
-    print ("route = ask")
 
     return render_template('ask.html',  error=error)
 
