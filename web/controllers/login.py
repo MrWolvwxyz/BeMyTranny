@@ -21,7 +21,7 @@ def loginfunc():
 			if password[0][0] == request.form['password']:
 				print('found username password pair')
 				session['username'] = request.form['username']
-				return render_template('register.html', error = error)
+				return render_template('redirect.html', error = error)
 			else:
 				error = 'you entered the wrong password for this username'
 				print('wrong password for username')
@@ -41,7 +41,9 @@ def loginfunc():
 		cur.execute("commit")
 		session['username'] = request.form['username']
 		print('exiting post logic')
+		return render_template('redirect.html',error=error)
 	return render_template('register.html',error=error)
+
 
 
 
