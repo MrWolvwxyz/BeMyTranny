@@ -11,8 +11,20 @@ addmoreresponse = Blueprint('addmoreresponse', __name__, template_folder='templa
 
 @addmoreresponse.route('/addmoreresponse')
 def addmoreresponsefunc():
+	options=\
+	{
+		"login": False,
+		"username": "",
+		"status": 0
+	}
 	error = None
-	return render_template('addmoreresponse.html', error = error)
+	if session.has_key('username'):
+		options["login"]=True
+		options["username"]=session["username"]
+	if request.method == 'GET':
+		print ("this is get")
+		
+	return render_template('addmoreresponse.html', error = error, **options)
 
 
 

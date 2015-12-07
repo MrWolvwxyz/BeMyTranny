@@ -10,7 +10,17 @@ login = Blueprint('login', __name__, template_folder='templates')
 
 @login.route('/login', methods = ['GET', 'POST'])
 def loginfunc():
+	options=\
+	{
+		"login": False,
+		"username": "",
+		"status": 0
+	}
 	error = None
+	if session.has_key('username'):
+		options["login"]=True
+		options["username"]=session["username"]
+
 	if request.method == 'POST' and request.form['operation'] == 'login':
 		print ("hey I'm at the login page")
 		cur = mysql.connection.cursor()
@@ -21,15 +31,15 @@ def loginfunc():
 			if password[0][0] == request.form['password']:
 				print('found username password pair')
 				session['username'] = request.form['username']
-				return render_template('redirect.html', error = error)
+				return render_template('redirect.html', error = error, **options)
 			else:
 				error = 'you entered the wrong password for this username'
 				print('wrong password for username')
-				return render_template('register.html', error = error)
+				return render_template('register.html', error = error, **options)
 		else:
 			error = 'username not found'
 			print('username not found')
-			return render_template('register.html', error = error)
+			return render_template('register.html', error = error, **options)
 	elif request.method == 'POST' and request.form['operation'] == 'register':
 		print ("hey I'm at the register page")
 		cur = mysql.connection.cursor()
@@ -42,7 +52,7 @@ def loginfunc():
 		session['username'] = request.form['username']
 		print('exiting post logic')
 		return render_template('redirect.html',error=error)
-	return render_template('register.html',error=error)
+	return render_template('register.html',error=error, **options)
 
 
 

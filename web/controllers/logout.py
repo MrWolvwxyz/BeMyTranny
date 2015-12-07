@@ -10,13 +10,23 @@ logout = Blueprint('logout', __name__, template_folder='templates')
 
 @logout.route('/logout',  methods=['GET', 'POST'])
 def logoutfunc():
+	options=\
+	{
+		"login": False,
+		"username": "",
+		"status": 0
+	}
 	error = None
+	if session.has_key('username'):
+		options["login"]=True
+		options["username"]=session["username"]
 	if request.method=='POST':
 		session.pop('logged_in', None)
+		session.clear()
 		print ('You have logged out')
-		return render_template('index.html', error = error)
+		return redirect('/index')
 
-	return render_template('logout.html', error = error)
+	return render_template('logout.html', error = error, **options)
 
 
 
