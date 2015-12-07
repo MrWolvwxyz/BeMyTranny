@@ -43,17 +43,7 @@
                     <li>
                         <a href="#about">Explore</a>
                     </li>
-                    <li>
-                        <div class="dropdown" style="margin-top:10px">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{name}}
-                            <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">My Home Page</a></li>
-                              <li><a href="#">User Settings</a></li>
-                              <li><a href="/logout">Log Out</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                     
                 </ul>
             </div>
@@ -77,22 +67,16 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Welcome, {{name}}!</h2>
-                    <p class="lead">How's your day( ´ ▽ ` )ﾉ</p>
-                    <br>
-                    <p class="lead">Your rank: 17/1124 Users</p>
-                    <p class="lead">Cheers!</p>
+               <h1>Are you sure you want to logout?</h1>
+               <h2>Click and go to the <a href="/">Home Page</a></h2>
 
-                    <center>
-                            <button type = "button" style="color:grey;">View my Translation History!</button>
-                    </center>
-                </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="../static/img//user_image.jpg" alt="">
-                </div>
+               <form method="post" enctype=multipart/form-data id = "logoutform">
+
+                        <input name="op" value="submit" hidden>
+
+                        <input type="submit" value = "Log Out!">
+                    </form>
+
             </div>
 
         </div>

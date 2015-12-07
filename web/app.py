@@ -9,6 +9,7 @@ app.register_blueprint(controllers.main)
 app.register_blueprint(controllers.login)
 app.register_blueprint(controllers.userpage)
 app.register_blueprint(controllers.addmoreresponse)
+app.register_blueprint(controllers.logout)
 
 
 app.config['MYSQL_USER']='root'

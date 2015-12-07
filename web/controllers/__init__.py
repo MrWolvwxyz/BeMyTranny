@@ -4,3 +4,4 @@ from explorepage import *
 from login import *
 from userpage import *
 from addmoreresponse import *
+from logout import *
