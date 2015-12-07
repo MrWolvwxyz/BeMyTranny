@@ -21,8 +21,6 @@ def loginfunc():
 			print(request.form['password'], password[0][0])
 			if password[0][0] == request.form['password']:
 				print('found username password pair')
-				if session['username'] is not None:
-					session.pop('username', None)
 				session['username'] = request.form['username']
 				return render_template('register.html', error = error)
 			else:
@@ -42,8 +40,6 @@ def loginfunc():
 		print("insert into user (username,password,email) values ('" + username + "', '" + password + "', '" + email + "';")
 		cur.execute("insert into user (username,password,email) values ('" + username + "', '" + password + "', '" + email + "');")
 		cur.execute("commit")
-		if session['username'] is not None:
-			session.pop('username', None)
 		session['username'] = request.form['username']
 		print('exiting post logic')
 	return render_template('register.html',error=error)
