@@ -13,7 +13,16 @@ picAdded = False
 
 @ask.route('/ask',  methods=['GET', 'POST'])
 def askfunc():
+    options=\
+    {
+        "login": False,
+        "username": "",
+        "status": 0
+    }
     error = None
+    if session.has_key('username'):
+        options["login"]=True
+        options["username"]=session["username"]
     if request.method=='POST':
         op=request.form['op']
         print ("enter the post")
@@ -32,16 +41,18 @@ def askfunc():
                 cc = Classifier(pic_location)
                 ori = cc.classify_text()
             tar = request.form['tar']
+            #if tar == 'NA'
             des = request.form['des']
             cur=mysql.connection.cursor()
             cur.execute("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', '" + newpic.filename +"', "+ currentuserid +");")
+            print ("insert into post (title, description, origin, target, pathtophoto, userid) values ('" + title + "', '" + des + "', '" + ori + "', '" + tar + "', '" + newpic.filename +"', "+ currentuserid +");")
             cur.execute("commit")
+
 
         return render_template('redirect.html',  error=error)
 
-    print ("route = ask")
 
-    return render_template('ask.html',  error=error)
+    return render_template('ask.html',  error=error, **options)
 
 
 

@@ -1,5 +1,7 @@
 drop table user;
 drop table post;
+drop table answer;
+
 
 CREATE TABLE user(
 userid int auto_increment PRIMARY KEY,
@@ -7,6 +9,8 @@ username VARCHAR(20),
 password VARCHAR(20),
 email VARCHAR(40)
 );
+
+
 
 create table post(
 postid int auto_increment,
@@ -18,6 +22,17 @@ pathtophoto varchar(128),
 userid int,
 primary key (postid)
 );
+
+CREATE TABLE answer(
+answerid int auto_increment PRIMARY KEY,
+detail VARCHAR(256),
+userid int,
+postid int
+);
+
+insert into answer(detail, userid, postid)
+values
+('This means it is interesting', '1', '7');
 
 insert into user(username, password, email)
 values

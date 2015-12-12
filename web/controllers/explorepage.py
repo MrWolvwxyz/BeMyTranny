@@ -9,16 +9,25 @@ fakeuserid = 12345
 explorepage = Blueprint('explorepage', __name__, template_folder='templates')
 
 
-@explorepage.route('/explorepage')
+@explorepage.route('/explorepage', methods=['GET', 'POST'])
 def explorepagefunc():
-    if request.method == 'GET':
-        cur=mysql.connection.cursor()
-        cur.execute("select * from post")
-        msgs = [];
-        msgs=cur.fetchall()
+	options=\
+	{
+		"login": False,
+		"username": "",
+		"status": 0
+	}
 
-        print ("this is a get method") 
-    return render_template('explorepage.html', data = msgs)
+	if request.method == 'GET':
+		cur=mysql.connection.cursor()
+		cur.execute("select * from post")
+		msgs = [];
+		msgs=cur.fetchall()
+		if session.has_key('username'):
+			options["login"]=True
+			options["username"]=session["username"]
+		print ("this is a get method") 
+	return render_template('explorepage.html', data = msgs, **options )
 
 
 
