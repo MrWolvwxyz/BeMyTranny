@@ -43,9 +43,9 @@ class Classifier(object):
         text = text.decode("utf-8")
         translation = detect(text)
         try:
-            print self.langs[translation]
+            return self.langs[translation]
         except:
-            print translation
+            return translation
 
     def output_translation():
         pass
@@ -53,7 +53,7 @@ class Classifier(object):
 
 def main():
     cc = Classifier("spanish.png")
-    cc.classify_text()
+    print cc.classify_text()
 
 
 if __name__ == "__main__":
