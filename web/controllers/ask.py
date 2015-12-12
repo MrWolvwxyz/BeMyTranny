@@ -1,5 +1,6 @@
 from flask import *
 from hashlib import sha256
+from classifier import Classifier
 from extensions import mysql
 import os
 
@@ -22,10 +23,14 @@ def askfunc():
             picAdded = True;
             currentuserid = 1;
             currentuserid = str(currentuserid)
-            newpic.save("static/pictures/"  + currentuserid +   "/" +newpic.filename)
+            pic_location = "static/pictures/"  + currentuserid +   "/" +newpic.filename
+            newpic.save(pic_location)
 
             title = request.form['title']
             ori = request.form['ori']
+            if ori is "I don't know": #TODO: update with proper default value
+                cc = Classifier(pic_location)
+                ori = cc.classify_text()
             tar = request.form['tar']
             des = request.form['des']
             cur=mysql.connection.cursor()
