@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import controllers
+import sys
 from extensions import mysql
 app = Flask(__name__, template_folder='templates')
 
@@ -13,7 +14,11 @@ app.register_blueprint(controllers.logout)
 
 
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='zhouliyuan'
+try:
+    pw = str(sys.argv[1]) #password supplied as cmd line arg
+except:
+    pw = str(raw_input("input mysql password:")) #or input later
+app.config['MYSQL_PASSWORD']=pw
 app.config['MYSQL_DB']='bmt'
 app.secret_key = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
 mysql.init_app(app)
