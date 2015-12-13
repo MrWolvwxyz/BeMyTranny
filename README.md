@@ -17,4 +17,7 @@ export PATH=$PATH:/usr/local/mysql/bin/
 
 export PATH=${PATH}:/usr/local/mysql/bin
 
-mysql start
+mysql 
+
+
+brew install tesseract
