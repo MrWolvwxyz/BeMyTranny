@@ -12,6 +12,7 @@ app.register_blueprint(controllers.login)
 app.register_blueprint(controllers.userpage)
 app.register_blueprint(controllers.addmoreresponse)
 app.register_blueprint(controllers.logout)
+app.register_blueprint(controllers.about)
 
 
 app.config['MYSQL_USER']='root'

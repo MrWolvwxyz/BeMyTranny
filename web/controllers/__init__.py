@@ -5,3 +5,4 @@ from login import *
 from userpage import *
 from addmoreresponse import *
 from logout import *
+from about import *
