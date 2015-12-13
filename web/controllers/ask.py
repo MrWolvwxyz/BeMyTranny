@@ -37,7 +37,10 @@ def askfunc():
 
             title = request.form['title']
             ori = request.form['ori']
-            if ori is "I don't know": #TODO: update with proper default value
+            ori = str(ori)
+            print ori
+            if ori == "I dont know": #TODO: update with proper default value
+                print ("classifier entered")
                 cc = Classifier(pic_location)
                 ori = cc.classify_text()
             tar = request.form['tar']
