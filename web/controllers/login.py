@@ -1,6 +1,7 @@
 from flask import *
 from hashlib import sha256
 from extensions import mysql
+import os
 
 fakeloggedin = True
 fakeuserid = 12345
@@ -50,6 +51,20 @@ def loginfunc():
 		cur.execute("insert into user (username,password,email) values ('" + username + "', '" + password + "', '" + email + "');")
 		cur.execute("commit")
 		session['username'] = request.form['username']
+		cur=mysql.connection.cursor()
+		cur.execute("select userid from user where username = "  + "'" + session["username"] + "'")
+		useridresult = [];
+
+		useridresult=cur.fetchall()
+		userid = useridresult[0][0]
+		userid = str(userid)
+		newpath = ('../web/static/pictures/' + userid) 
+		if not os.path.exists(newpath):
+			print newpath
+			os.makedirs(newpath)
+
+
+
 		print('exiting post logic')
 		return render_template('redirect.html',error=error)
 	return render_template('register.html',error=error, **options)
