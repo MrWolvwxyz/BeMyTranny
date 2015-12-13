@@ -23,6 +23,11 @@ def askfunc():
     if session.has_key('username'):
         options["login"]=True
         options["username"]=session["username"]
+
+
+    else:
+        return render_template('errorpage.html', error = error)
+
     if request.method=='POST':
         op=request.form['op']
         print ("enter the post")
@@ -38,11 +43,13 @@ def askfunc():
             title = request.form['title']
             ori = request.form['ori']
             ori = str(ori)
+
             print ori
             if ori == "I dont know": #TODO: update with proper default value
                 print ("classifier entered")
                 cc = Classifier(pic_location)
                 ori = cc.classify_text()
+                ori = ori.title()
             tar = request.form['tar']
             #if tar == 'NA'
             des = request.form['des']
