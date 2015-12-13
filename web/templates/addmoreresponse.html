@@ -85,18 +85,31 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">What does this mean?<br>Target Language: English</h2>
-                    <p class="lead">I got this tshit from AOSS, anyone can tell me what does it mean?</p>
+                    <h2 class="section-heading">Title: {{post[1]}}<br>Target Language: {{post[4]}}</h2>
+                    <p class="lead">{{post[2]}}</p>
                     <h4>Others' Translation:</h4>
-                    <h5>Lucy: <br>  Have a nice day.</h5>
+
+                    {% for i in index %}
+
+                    <h5>Translation by {{name[i][0][0]}}: <br> {{answer[i][1]}}</h5>
                     <center>
                             <button type = "button" style="color:grey;">Report Mistake</button>
                     </center>
+
+                    {% endfor %}
+                    
                     <h5>My translation: </h5>
-                    <textarea cols="40"></textarea>
-                    <center>
-                            <button type = "button" style="color:grey;">Submit</button>
-                    </center>
+
+
+                    <form method="post" enctype=multipart/form-data id = "answerform">
+
+                        <input name="op" value="submit" hidden>
+
+                        <textarea rows="4" cols="40" name="ans" form="answerform">Enter your answer here...</textarea>
+                        <br>
+
+                        <input type="submit" value = "Answer!">
+                    </form>
                     
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
