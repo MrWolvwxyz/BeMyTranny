@@ -73,7 +73,12 @@ def addmoreresponsefunc(postID):
 		if op == "submit":
 			des = request.form['ans']
 			cur=mysql.connection.cursor()
-			userid = 1
+			cur=mysql.connection.cursor()
+			cur.execute("select userid from user where username = "  + "'" + session["username"] + "'")
+			useridresult = [];
+
+			useridresult=cur.fetchall()
+			userid = useridresult[0][0]
 			userid = str(userid)
 
 
