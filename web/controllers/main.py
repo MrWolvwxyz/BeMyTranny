@@ -17,7 +17,7 @@ def index():
 	msgs = [];
 	msgs=cur.fetchall()
 	print msgs
-	print msgs[0][1]
+	#print msgs[0][1]
 	if session.has_key("username"):
 		return redirect('/userpage')
 	return render_template('index.html',title='Home')
