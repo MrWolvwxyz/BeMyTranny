@@ -51,7 +51,8 @@
                     
                     {% if login %}
                     <li>
-                        <a href="/explorepage">Explore</a>
+                        <a class="navbar-brand topnav" href="/ask">Ask</a>
+                        <a class="navbar-brand topnav" href="/explorepage">Explore</a>
                     </li>
                     <li>
                         <div class="dropdown" style="margin-top:10px">
@@ -65,6 +66,7 @@
                     </li>
                     {% else %}
                     <li>
+                        <a class="navbar-brand topnav" href="/ask">Ask</a>
                         <a class="navbar-brand topnav" href="/explorepage">Explore</a>
                         <a class="navbar-brand topnav" href="/login">Login/Registration</a>
                     </li>

@@ -39,13 +39,33 @@
                 <a class="navbar-brand topnav" href="/index">Be My Translator</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
+                    {% if login %}
                     <li>
+                        <a class="navbar-brand topnav" href="/ask">Ask</a>
+                        <a class="navbar-brand topnav" href="/explorepage">Explore</a>
+                    </li>
+                    <li>
+                        <div class="dropdown" style="margin-top:10px">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{username}}
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="/userpage">My Home Page</a></li>
+                              <li><a href="/logout">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="navbar-brand topnav" href="/ask">Ask</a>
                         <a class="navbar-brand topnav" href="/explorepage">Explore</a>
                         <a class="navbar-brand topnav" href="/login">Login/Registration</a>
                     </li>
-                    
+                    {% endif %}
+
+
                     
                 </ul>
             </div>

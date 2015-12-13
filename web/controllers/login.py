@@ -21,6 +21,7 @@ def loginfunc():
 	if session.has_key('username'):
 		options["login"]=True
 		options["username"]=session["username"]
+		return render_template('redirect.html', error = error, **options)
 
 	if request.method == 'POST' and request.form['operation'] == 'login':
 		print ("hey I'm at the login page")
