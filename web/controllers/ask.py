@@ -35,7 +35,14 @@ def askfunc():
 
             newpic = request.files['photo']
             picAdded = True;
-            currentuserid = 1;
+            cur=mysql.connection.cursor()
+            cur.execute("select userid from user where username = "  + "'" + session["username"] + "'")
+            useridresult = [];
+
+            useridresult=cur.fetchall()
+            userid = useridresult[0][0]
+            userid = str(userid)
+            currentuserid = userid;
             currentuserid = str(currentuserid)
             pic_location = "static/pictures/"  + currentuserid +   "/" +newpic.filename
             newpic.save(pic_location)
