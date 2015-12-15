@@ -7,7 +7,7 @@ Be my translator
 2. Inside the folder, activate the virtualenvironment. 
 DO: $ source web/venv/bin/activate
 
-You will vidn (venv) before the line
+You will find (venv) before the line
 
 Then:
 
